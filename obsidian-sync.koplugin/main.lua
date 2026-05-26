@@ -480,18 +480,20 @@ function ObsidianSync:buildPayload()
         -- SOURCE 1: Old per-page highlight table  highlight[pageno] = {list}
         -- Use pairs() not ipairs() — ipairs stops at the first gap in keys.
         local old_h = doc_settings:readSetting("highlight") or {}
-        for pageno, page_list in pairs(old_h) do
-            if type(page_list) == "table" then
-                for _, h in pairs(page_list) do
-                    if type(h) == "table" then
-                        add({
-                            chapter          = h.chapter,
-                            datetime         = h.datetime,
-                            highlighted_text = h.text or h.highlighted_text,
-                            note             = h.note,
-                            -- prefer the stored pageno field; fall back to the table key
-                            page             = h.pageno or tonumber(pageno),
-                        })
+        if type(old_h) == "table" then
+            for pageno, page_list in pairs(old_h) do
+                if type(page_list) == "table" then
+                    for _, h in pairs(page_list) do
+                        if type(h) == "table" then
+                            add({
+                                chapter          = h.chapter,
+                                datetime         = h.datetime,
+                                highlighted_text = h.text or h.highlighted_text,
+                                note             = h.note,
+                                -- prefer the stored pageno field; fall back to the table key
+                                page             = h.pageno or tonumber(pageno),
+                            })
+                        end
                     end
                 end
             end
@@ -499,15 +501,17 @@ function ObsidianSync:buildPayload()
 
         -- SOURCE 2: New flat annotations array (KOReader 2022+)
         local new_a = doc_settings:readSetting("annotations") or {}
-        for _, a in pairs(new_a) do
-            if type(a) == "table" then
-                add({
-                    chapter          = a.chapter,
-                    datetime         = a.datetime,
-                    highlighted_text = a.text or a.highlighted_text,
-                    note             = a.note,
-                    page             = a.pageno or a.page,
-                })
+        if type(new_a) == "table" then
+            for _, a in pairs(new_a) do
+                if type(a) == "table" then
+                    add({
+                        chapter          = a.chapter,
+                        datetime         = a.datetime,
+                        highlighted_text = a.text or a.highlighted_text,
+                        note             = a.note,
+                        page             = a.pageno or a.page,
+                    })
+                end
             end
         end
 
@@ -538,16 +542,18 @@ function ObsidianSync:buildPayload()
         -- SOURCE 4: Bookmarks that carry a user note
         -- (pure page-marker bookmarks without notes are skipped)
         local bookmarks = doc_settings:readSetting("bookmarks") or {}
-        for _, bm in pairs(bookmarks) do
-            if type(bm) == "table" and bm.notes and bm.notes ~= "" then
-                add({
-                    chapter          = bm.chapter,
-                    datetime         = bm.datetime,
-                    -- "text" is the auto-extracted context; "notes" is the user note
-                    highlighted_text = bm.text,
-                    note             = bm.notes,
-                    page             = bm.page or bm.pageno,
-                })
+        if type(bookmarks) == "table" then
+            for _, bm in pairs(bookmarks) do
+                if type(bm) == "table" and bm.notes and bm.notes ~= "" then
+                    add({
+                        chapter          = bm.chapter,
+                        datetime         = bm.datetime,
+                        -- "text" is the auto-extracted context; "notes" is the user note
+                        highlighted_text = bm.text,
+                        note             = bm.notes,
+                        page             = bm.page or bm.pageno,
+                    })
+                end
             end
         end
 
