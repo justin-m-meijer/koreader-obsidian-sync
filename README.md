@@ -197,6 +197,10 @@ Each book gets one file. It is created on first sync and updated on every subseq
 | Kindle (jailbroken with KOReader) | ✅ |
 | Obsidian on Windows / Mac / Linux | ✅ (desktop only) |
 
+## Support
+
+If this is useful to you, you can support my work with a [donation through PayPal](https://www.paypal.com/donate?hosted_button_id=UNBDNLN8MSC88).
+
 ---
 
 ## License
