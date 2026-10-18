@@ -196,3 +196,11 @@ Each book gets one file. It is created on first sync and updated on every subseq
 | Kobo | ✅ |
 | Kindle (jailbroken with KOReader) | ✅ |
 | Obsidian on Windows / Mac / Linux | ✅ (desktop only) |
+
+---
+
+## License
+
+Licensed under the [Mozilla Public License 2.0](LICENSE). You may use, change and share it, also
+commercially. If you distribute a changed version of these files, those files must stay under the
+MPL 2.0 and their source must be available.
