@@ -547,6 +547,19 @@ var KOReaderSyncSettingTab = class extends import_obsidian.PluginSettingTab {
       "POST /api/annotations \u2014 sync full book with highlights (companion plugin)"
     ];
     endpoints.forEach((e) => endpointList.createEl("li", { text: e }));
+    containerEl.createEl("h3", { text: "Support" });
+    new import_obsidian.Setting(containerEl).setName("Report a problem or ask a question").setDesc(
+      "Opens the support form in your browser. It files an issue on GitHub for you; no GitHub account needed, and your e-mail address is not published."
+    ).addButton(
+      (button) => button.setButtonText("Open support form").onClick(() => {
+        const params = new URLSearchParams({
+          app: "koreader-obsidian-sync",
+          version: this.plugin.manifest.version,
+          os: `Obsidian ${import_obsidian.apiVersion || ""} on ${process.platform}`.trim()
+        });
+        window.open(`https://support.justinmeijer.nl/?${params.toString()}`);
+      })
+    );
   }
 };
 function getLocalIP() {

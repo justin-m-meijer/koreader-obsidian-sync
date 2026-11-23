@@ -1,0 +1,10 @@
+name: Feature request
+description: Something you wish KOReader Obsidian Sync did
+labels: [enhancement, needs-triage]
+body:
+  - type: textarea
+    id: wish
+    attributes:
+      label: What should it do, and why?
+    validations:
+      required: true

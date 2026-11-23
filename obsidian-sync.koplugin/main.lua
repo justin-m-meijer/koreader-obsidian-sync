@@ -234,6 +234,17 @@ function ObsidianSync:addToMainMenu(menu_items)
             {
                 text     = _("Configure server…"),
                 callback = function() self:askServerUrl() end,
+                separator = true,
+            },
+            -- Support: an e-reader has no browser worth typing in, so show the address to use elsewhere.
+            -- The form files a GitHub issue; no GitHub account needed.
+            {
+                text     = _("Report a problem…"),
+                callback = function()
+                    UIManager:show(InfoMessage:new{
+                        text = _("Something wrong, or a question?\n\nOpen this address on your phone or computer:\n\nsupport.justinmeijer.nl/?app=koreader-obsidian-sync\n\nIt files an issue on GitHub for you; no account needed."),
+                    })
+                end,
             },
         },
     }
