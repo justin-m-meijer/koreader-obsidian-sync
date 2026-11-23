@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a problem without a GitHub account
+    url: https://support.justinmeijer.nl/?app=koreader-obsidian-sync
+    about: The support form. It creates an issue here for you; your e-mail address is not published.

@@ -1,0 +1,11 @@
+name: Question
+description: A support question about KOReader Obsidian Sync
+labels: [question, needs-triage]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: Say what you tried already. Do not paste passwords or private data.
+    validations:
+      required: true

@@ -1,0 +1,20 @@
+name: Bug report
+description: Something in KOReader Obsidian Sync does not work the way it should
+labels: [bug, needs-triage]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens?
+      description: What did you do, what did you expect, what happened instead? Do not paste passwords or private data.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version of KOReader Obsidian Sync
+  - type: input
+    id: system
+    attributes:
+      label: System
+      placeholder: "KOReader 2025.x on Kobo; Obsidian 1.8 on macOS"
