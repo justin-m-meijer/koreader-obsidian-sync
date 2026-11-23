@@ -34,6 +34,9 @@ jobs:
           gh label create question     --repo "$REPO" --force --color D876E3 --description "A support question"
           gh label create bug          --repo "$REPO" --force --color D73A4A --description "Something is broken"
           gh label create enhancement  --repo "$REPO" --force --color A2EEEF --description "A wish or feature request"
+          gh label create content      --repo "$REPO" --force --color 1D76DB --description "Texts, copy, translations, docs: implemented and merged without approval"
+          gh label create from-folio   --repo "$REPO" --force --color 5319E7 --description "Imported from Folio by the daily digest"
+          gh label create needs-review --repo "$REPO" --force --color B60205 --description "A content-lane PR that touches more than content; a person merges it"
       - name: Mark as new
         run: gh issue edit "$NUMBER" --repo "$REPO" --add-label needs-triage
 
